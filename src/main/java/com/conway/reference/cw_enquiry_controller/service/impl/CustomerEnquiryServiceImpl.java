@@ -3,6 +3,7 @@ package com.conway.reference.cw_enquiry_controller.service.impl;
 import com.conway.reference.cw_enquiry_controller.dao.CustomerEnquiryDao;
 import com.conway.reference.cw_enquiry_controller.dto.AllCustomerEnquiryResponseDto;
 import com.conway.reference.cw_enquiry_controller.dto.CustomerEnquiryRequestDto;
+import com.conway.reference.cw_enquiry_controller.dto.SearchByCustomerNameRequestDto;
 import com.conway.reference.cw_enquiry_controller.model.Product;
 import com.conway.reference.cw_enquiry_controller.service.CustomerEnquiryService;
 import lombok.RequiredArgsConstructor;
@@ -37,5 +38,10 @@ public class CustomerEnquiryServiceImpl implements CustomerEnquiryService {
     @Override
     public List<AllCustomerEnquiryResponseDto> getAllEnquiries() {
         return customerEnquiryDao.getAllCustomerEnquiryDetails();
+    }
+
+    @Override
+    public List<AllCustomerEnquiryResponseDto> getEnquiryByCustomerName(SearchByCustomerNameRequestDto customerName) {
+        return customerEnquiryDao.searchByCustomerName(customerName);
     }
 }

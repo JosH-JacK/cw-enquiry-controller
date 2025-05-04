@@ -2,6 +2,7 @@ package com.conway.reference.cw_enquiry_controller.controller;
 
 import com.conway.reference.cw_enquiry_controller.dto.AllCustomerEnquiryResponseDto;
 import com.conway.reference.cw_enquiry_controller.dto.CustomerEnquiryRequestDto;
+import com.conway.reference.cw_enquiry_controller.dto.SearchByCustomerNameRequestDto;
 import com.conway.reference.cw_enquiry_controller.service.CustomerEnquiryService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -25,6 +26,12 @@ public class CustomerEnquiryController {
     @GetMapping(value = "/customer-enquiries")
     public ResponseEntity<List<AllCustomerEnquiryResponseDto>> getAllCustomerEnquiries(){
         List<AllCustomerEnquiryResponseDto> response = customerEnquiryService.getAllEnquiries();
+        return ResponseEntity.ok(response);
+    }
+
+    @GetMapping(value = "/search/customer")
+    public ResponseEntity<List<AllCustomerEnquiryResponseDto>> searchByCustomerName(@RequestBody SearchByCustomerNameRequestDto customerName) {
+        List<AllCustomerEnquiryResponseDto> response = customerEnquiryService.getEnquiryByCustomerName(customerName);
         return ResponseEntity.ok(response);
     }
 }

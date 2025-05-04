@@ -2,6 +2,7 @@ package com.conway.reference.cw_enquiry_controller.service;
 
 import com.conway.reference.cw_enquiry_controller.dto.AllCustomerEnquiryResponseDto;
 import com.conway.reference.cw_enquiry_controller.dto.CustomerEnquiryRequestDto;
+import com.conway.reference.cw_enquiry_controller.dto.SearchByCustomerNameRequestDto;
 
 import java.util.List;
 
@@ -10,5 +11,7 @@ public interface CustomerEnquiryService {
     public String addNewCustomerEnquiry(CustomerEnquiryRequestDto customerEnquiryRequestDto);
 
     public List<AllCustomerEnquiryResponseDto> getAllEnquiries();
+
+    public List<AllCustomerEnquiryResponseDto> getEnquiryByCustomerName(SearchByCustomerNameRequestDto customerName);
 
 }
