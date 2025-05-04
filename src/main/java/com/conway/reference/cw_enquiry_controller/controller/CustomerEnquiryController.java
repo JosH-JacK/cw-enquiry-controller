@@ -3,6 +3,7 @@ package com.conway.reference.cw_enquiry_controller.controller;
 import com.conway.reference.cw_enquiry_controller.dto.AllCustomerEnquiryResponseDto;
 import com.conway.reference.cw_enquiry_controller.dto.CustomerEnquiryRequestDto;
 import com.conway.reference.cw_enquiry_controller.dto.SearchByCustomerNameRequestDto;
+import com.conway.reference.cw_enquiry_controller.dto.SearchByDateRequestDto;
 import com.conway.reference.cw_enquiry_controller.service.CustomerEnquiryService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -29,9 +30,15 @@ public class CustomerEnquiryController {
         return ResponseEntity.ok(response);
     }
 
-    @GetMapping(value = "/search/customer")
+    @GetMapping(value = "/search/by-customer")
     public ResponseEntity<List<AllCustomerEnquiryResponseDto>> searchByCustomerName(@RequestBody SearchByCustomerNameRequestDto customerName) {
         List<AllCustomerEnquiryResponseDto> response = customerEnquiryService.getEnquiryByCustomerName(customerName);
+        return ResponseEntity.ok(response);
+    }
+
+    @GetMapping(value = "search/by-date")
+    public ResponseEntity<List<AllCustomerEnquiryResponseDto>> searchByDate(@RequestBody SearchByDateRequestDto dateRange){
+        List<AllCustomerEnquiryResponseDto> response = customerEnquiryService.getEnquiryByDateRange(dateRange);
         return ResponseEntity.ok(response);
     }
 }

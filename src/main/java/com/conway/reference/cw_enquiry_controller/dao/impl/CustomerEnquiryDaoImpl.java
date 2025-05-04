@@ -5,6 +5,7 @@ import com.conway.reference.cw_enquiry_controller.dao.CustomerEnquiryDao;
 import com.conway.reference.cw_enquiry_controller.dto.AllCustomerEnquiryResponseDto;
 import com.conway.reference.cw_enquiry_controller.dto.CustomerEnquiryRequestDto;
 import com.conway.reference.cw_enquiry_controller.dto.SearchByCustomerNameRequestDto;
+import com.conway.reference.cw_enquiry_controller.dto.SearchByDateRequestDto;
 import com.conway.reference.cw_enquiry_controller.model.Product;
 import jakarta.persistence.EntityManager;
 import jakarta.transaction.Transactional;
@@ -76,7 +77,18 @@ public class CustomerEnquiryDaoImpl implements CustomerEnquiryDao {
     @Override
     public List<AllCustomerEnquiryResponseDto> searchByCustomerName(SearchByCustomerNameRequestDto customerName) {
         List<AllCustomerEnquiryResponseDto> result = entityManager
-                .createNativeQuery(SqlQueries.FETCH_ENQUIRY_BY_CUSTOMER_NAME, "CustomerEnquiryResultSetMapping").setParameter("customerName", "%" + customerName.getCustomerName() + "%")
+                .createNativeQuery(SqlQueries.FETCH_ENQUIRY_BY_CUSTOMER_NAME, "CustomerEnquiryResultSetMapping")
+                .setParameter("customerName", "%" + customerName.getCustomerName() + "%")
+                .getResultList();
+        return result;
+    }
+
+    @Override
+    public List<AllCustomerEnquiryResponseDto> searchByDate(SearchByDateRequestDto dateRange) {
+        List<AllCustomerEnquiryResponseDto> result = entityManager
+                .createNativeQuery(SqlQueries.FETCH_ENQUIRY_BETWEEN_DATE_RANGE, "CustomerEnquiryResultSetMapping")
+                .setParameter("fromDate", dateRange.getFromDate())
+                .setParameter("toDate", dateRange.getToDate())
                 .getResultList();
         return result;
     }
