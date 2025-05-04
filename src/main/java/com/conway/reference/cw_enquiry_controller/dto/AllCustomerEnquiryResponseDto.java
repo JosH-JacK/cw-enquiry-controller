@@ -14,7 +14,7 @@ import java.util.List;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class CustomerEnquiryResponseDto {
+public class AllCustomerEnquiryResponseDto {
     private Long enquiryId;
     private String referenceType;
     private String customerName;
@@ -22,9 +22,11 @@ public class CustomerEnquiryResponseDto {
     private String contactPersonName;
     private Long contactNumber;
     private String emailId;
+    private String model;
+    private String optionCode;
+    private String type;
     private Long gstNumber;
     private String remarks;
-    private List<Product> product;
     private boolean quotationGiven;
     private boolean followUpRequired;
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy")

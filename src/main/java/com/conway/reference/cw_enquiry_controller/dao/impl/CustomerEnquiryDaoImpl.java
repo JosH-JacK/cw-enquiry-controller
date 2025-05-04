@@ -3,7 +3,7 @@ package com.conway.reference.cw_enquiry_controller.dao.impl;
 import com.conway.reference.cw_enquiry_controller.constant.SqlQueries;
 import com.conway.reference.cw_enquiry_controller.dao.CustomerEnquiryDao;
 import com.conway.reference.cw_enquiry_controller.dto.CustomerEnquiryRequestDto;
-import com.conway.reference.cw_enquiry_controller.dto.CustomerEnquiryResponseDto;
+import com.conway.reference.cw_enquiry_controller.dto.AllCustomerEnquiryResponseDto;
 import com.conway.reference.cw_enquiry_controller.model.Product;
 import jakarta.persistence.EntityManager;
 import jakarta.transaction.Transactional;
@@ -65,8 +65,8 @@ public class CustomerEnquiryDaoImpl implements CustomerEnquiryDao {
 
     @Override
     @Transactional
-    public List<CustomerEnquiryResponseDto> getAllCustomerEnquiryDetails() {
-        List<CustomerEnquiryResponseDto> result = entityManager
+    public List<AllCustomerEnquiryResponseDto> getAllCustomerEnquiryDetails() {
+        List<AllCustomerEnquiryResponseDto> result = entityManager
                 .createNativeQuery(SqlQueries.FETCH_ALL_CUSTOMER_ENQUIRY_QUERY, "CustomerEnquiryResultSetMapping")
                 .getResultList();
         return result;

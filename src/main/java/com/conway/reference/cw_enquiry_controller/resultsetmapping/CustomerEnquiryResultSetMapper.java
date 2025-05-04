@@ -1,12 +1,14 @@
 package com.conway.reference.cw_enquiry_controller.resultsetmapping;
 
-import com.conway.reference.cw_enquiry_controller.dto.CustomerEnquiryResponseDto;
+import com.conway.reference.cw_enquiry_controller.dto.AllCustomerEnquiryResponseDto;
 import jakarta.persistence.*;
 
+import java.util.Date;
+@Entity
 @SqlResultSetMapping(
     name = "CustomerEnquiryResultSetMapping",
     classes = @ConstructorResult(
-        targetClass = CustomerEnquiryResponseDto.class,
+        targetClass = AllCustomerEnquiryResponseDto.class,
         columns = {
             @ColumnResult(name = "ENQUIRY_ID", type = Long.class),
             @ColumnResult(name = "REFERENCE_TYPE", type = String.class),
@@ -22,12 +24,11 @@ import jakarta.persistence.*;
             @ColumnResult(name = "REMARKS", type = String.class),
             @ColumnResult(name = "QUOTATION_GIVEN", type = Boolean.class),
             @ColumnResult(name = "FOLLOW_UP_REQUIRED", type = Boolean.class),
-            @ColumnResult(name = "ENQUIRED_ON", type = java.util.Date.class)
+            @ColumnResult(name = "ENQUIRED_ON", type = Date.class)
         }
     )
 )
 
-@Entity
 public class CustomerEnquiryResultSetMapper {
     @Id
     private Long enquiryId;

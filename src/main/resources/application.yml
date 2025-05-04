@@ -1,0 +1,28 @@
+spring:
+  application:
+    name: cw-enquiry-controller
+
+  datasource:
+    url: jdbc:oracle:thin:@localhost:1521/ORCLPDB
+    username: TRINITY
+    password: Tyghvb135
+    driver-class-name: oracle.jdbc.OracleDriver
+
+  jackson:
+    date-format: yyyy-MM-dd
+    time-zone: Asia/Kolkata
+
+server:
+  port: 8085
+  servlet:
+    context-path: /cw-enquiry-controller
+
+logging:
+  level:
+    root: INFO
+    org:
+      hibernate:
+        SQL: DEBUG
+        type:
+          descriptor:
+            sql: TRACE

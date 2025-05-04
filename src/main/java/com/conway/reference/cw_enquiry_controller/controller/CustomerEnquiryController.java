@@ -1,18 +1,18 @@
 package com.conway.reference.cw_enquiry_controller.controller;
 
+import com.conway.reference.cw_enquiry_controller.dto.AllCustomerEnquiryResponseDto;
 import com.conway.reference.cw_enquiry_controller.dto.CustomerEnquiryRequestDto;
 import com.conway.reference.cw_enquiry_controller.service.CustomerEnquiryService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/api/v1")
 @RequiredArgsConstructor
-public class CustomerEnquiryControllerImpl {
+public class CustomerEnquiryController {
 
     private final CustomerEnquiryService customerEnquiryService;
 
@@ -22,4 +22,9 @@ public class CustomerEnquiryControllerImpl {
         return ResponseEntity.ok(response);
     }
 
+    @GetMapping(value = "/customer-enquiries")
+    public ResponseEntity<List<AllCustomerEnquiryResponseDto>> getAllCustomerEnquiries(){
+        List<AllCustomerEnquiryResponseDto> response = customerEnquiryService.getAllEnquiries();
+        return ResponseEntity.ok(response);
+    }
 }

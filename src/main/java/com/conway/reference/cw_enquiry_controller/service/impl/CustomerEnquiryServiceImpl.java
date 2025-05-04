@@ -1,6 +1,7 @@
 package com.conway.reference.cw_enquiry_controller.service.impl;
 
 import com.conway.reference.cw_enquiry_controller.dao.CustomerEnquiryDao;
+import com.conway.reference.cw_enquiry_controller.dto.AllCustomerEnquiryResponseDto;
 import com.conway.reference.cw_enquiry_controller.dto.CustomerEnquiryRequestDto;
 import com.conway.reference.cw_enquiry_controller.model.Product;
 import com.conway.reference.cw_enquiry_controller.service.CustomerEnquiryService;
@@ -31,5 +32,10 @@ public class CustomerEnquiryServiceImpl implements CustomerEnquiryService {
             e.printStackTrace();
             throw new RuntimeException("Exception while adding new enquiry",e);
         }
+    }
+
+    @Override
+    public List<AllCustomerEnquiryResponseDto> getAllEnquiries() {
+        return customerEnquiryDao.getAllCustomerEnquiryDetails();
     }
 }
